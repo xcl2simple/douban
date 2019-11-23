@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 public class Film {
-    private Integer id;
+    private String id;
     private String name;
     private String director;
     private String scriptwriter;

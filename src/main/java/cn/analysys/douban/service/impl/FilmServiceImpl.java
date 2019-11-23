@@ -1,12 +1,10 @@
 package cn.analysys.douban.service.impl;
 
 import cn.analysys.douban.mapper.FilmMapper;
-import cn.analysys.douban.pojo.Film;
-import cn.analysys.douban.pojo.FilmParam;
+import cn.analysys.douban.pojo.*;
 import cn.analysys.douban.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
 
@@ -34,4 +32,14 @@ public class FilmServiceImpl implements FilmService {
         return filmMapper.selectFromTimeAndArea(filmParam);
     }
 
+    public List<FilmDetail> selectMessageById(String id, Integer limitnum){
+        FilmDetailParam filmDetailParam = new FilmDetailParam();
+        filmDetailParam.setId(id);
+        filmDetailParam.setLimitnum(limitnum);
+        return filmMapper.selectMessageById(filmDetailParam);
+    }
+
+    public List<FilmEssay> selectfilmEssay(String id){
+        return filmMapper.selectfilmEssay(id);
+    }
 }
