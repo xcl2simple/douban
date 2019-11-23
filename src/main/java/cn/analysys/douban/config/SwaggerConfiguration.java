@@ -27,7 +27,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.douban.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cn.analysys.douban.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
