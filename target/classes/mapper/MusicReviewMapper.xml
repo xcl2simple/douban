@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.analysys.douban.mapper.MusicReviewMapper">
-  <select id="selectTop10" resultType="cn.analysys.douban.pojo.MusicEssay">
-    select * from music_review where song_id = #{value1} limit 10
-  </select>
-</mapper>
