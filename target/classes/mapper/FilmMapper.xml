@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.analysys.douban.mapper.FilmMapper">
+    <select id="selectFromTimeAndArea" parameterType="cn.analysys.douban.pojo.FilmParam" resultType="cn.analysys.douban.pojo.Film">
+        SELECT * FROM film WHERE release_time>#{date} AND #{area_id}>area_id ORDER BY comment_num DESC LIMIT #{limitnum}
+    </select>
+
+    <select id="selectfilmEssay" parameterType="String" resultType="cn.analysys.douban.pojo.FilmEssay">
+        SELECT * FROM film_essay WHERE id=#{id}
+    </select>
+
+    <select id="selectMessageById" parameterType="cn.analysys.douban.pojo.FilmDetailParam" resultType="cn.analysys.douban.pojo.FilmDetail">
+        SELECT film.*,film_review.content FROM film INNER JOIN film_review WHERE film.id=#{id} ORDER BY film_review.useful_count LIMIT 10
+    </select>
+</mapper>
