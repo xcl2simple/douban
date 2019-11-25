@@ -6,6 +6,7 @@ import cn.analysys.douban.pojo.BookReview;
 import cn.analysys.douban.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,15 +31,15 @@ public class BookController {
         return listbooks;
     }
 
-    @GetMapping ("/bookEssay")
-    public List<BookEssay> showBookEssay(){
-        List<BookEssay> listBookEssay=bookService.selBookEssay(1000016);
+    @GetMapping ("/bookEssay/{id}")
+    public List<BookEssay> showBookEssay(@PathVariable("id") int id){
+        List<BookEssay> listBookEssay=bookService.selBookEssay(id);
         return  listBookEssay;
     }
 
-    @GetMapping("/bookReview")
-    public List<BookReview> showBookReview(){
-        List<BookReview> listBookReview=bookService.selBookReview(1007433);
+    @GetMapping("/bookReview/{id}")
+    public List<BookReview> showBookReview(@PathVariable("id") int id){
+        List<BookReview> listBookReview=bookService.selBookReview(id);
         return listBookReview;
     }
 }
