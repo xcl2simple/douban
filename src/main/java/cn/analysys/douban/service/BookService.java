@@ -1,21 +1,13 @@
 package cn.analysys.douban.service;
 
-import cn.analysys.douban.mapper.BookMapper;
 import cn.analysys.douban.pojo.Book;
+import cn.analysys.douban.pojo.BookEssay;
 import cn.analysys.douban.pojo.BookReview;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class BookService {
-
-    @Autowired
-    BookMapper bookmapper;
-
-    public List<Book> selectBook() {
-        return bookmapper.selectBook();
-    }
-
+public interface BookService {
+    public List<Book> selBook();
+    public List<BookEssay> selBookEssay(Integer id);
+    public List<BookReview> selBookReview(Integer id);
 }

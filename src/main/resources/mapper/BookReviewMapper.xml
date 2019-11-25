@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.analysys.douban.mapper.BookReviewMapper">
-    <select id="selBookReview" parameterType="Integer" resultType="cn.analysys.douban.pojo.BookReview">
-        select book.*,book_review.content as content  from book inner join book_review where book.id=#{id} order by book_review.useful_count limit 10
-    </select>
-</mapper>
