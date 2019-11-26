@@ -7,6 +7,7 @@ import cn.analysys.douban.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import java.util.List;
 @Api("书籍接口")
 @RequestMapping("/book")
 @RestController
+@Slf4j
 public class BookController {
 
     @Autowired
@@ -34,6 +36,7 @@ public class BookController {
     @ApiOperation(value = "最火的读书类目小说评论top10",notes = "无接受参数")
     @GetMapping("")
     public List<Book> showBook(){
+        log.debug("访问api接口：/book");
         List<Book> listbooks=bookService.selBook();
         return listbooks;
     }
@@ -42,6 +45,7 @@ public class BookController {
     @ApiImplicitParam(name = "essayId",value = "影评id",dataType = "String",required = true)
     @GetMapping ("/essay/{essayId}")
     public List<BookEssay> showBookEssay(@PathVariable("essayId") int id){
+        log.debug("访问api接口：/book"+"/essay/"+id);
         List<BookEssay> listBookEssay=bookService.selBookEssay(id);
         return  listBookEssay;
     }
@@ -50,6 +54,7 @@ public class BookController {
     @ApiImplicitParam(name = "reviewId",value = "查询短评id",dataType = "int",required = true)
     @GetMapping("/review/{reviewId}")
     public List<BookReview> showBookReview(@PathVariable("reviewId") int id){
+        log.debug("访问api接口：/book"+"/review/"+id);
         List<BookReview> listBookReview=bookService.selBookReview(id);
         return listBookReview;
     }
