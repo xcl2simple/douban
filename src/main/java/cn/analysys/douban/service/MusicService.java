@@ -50,8 +50,14 @@ public class MusicService {
 
         List<MusicReview> reviews = reviewMapper.selectTop10(id);
 
+        if (reviews == null){
+            return null;
+        }
         Music music = musicMapper.selectById(id);
 
+        if (music == null){
+            return null;
+        }
         MusicDetail musicDetail = new MusicDetail(music,reviews);
 
         return musicDetail;
