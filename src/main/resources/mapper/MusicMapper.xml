@@ -8,4 +8,11 @@
   <select id="selectById" resultType="cn.analysys.douban.pojo.Music" parameterType="Integer">
     select * from music where id = #{v }
   </select>
+  <select id="selectEssay" resultType="cn.analysys.douban.pojo.MusicEssay" parameterType="Integer">
+    select * from music_essay where id = #{value }
+  </select>
+
+    <select id="selectTop10" resultType="cn.analysys.douban.pojo.MusicReview">
+    select * from music_review where song_id = #{value1} limit 10
+  </select>
 </mapper>

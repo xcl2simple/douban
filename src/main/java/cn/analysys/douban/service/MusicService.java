@@ -1,65 +1,24 @@
 package cn.analysys.douban.service;
 
-import cn.analysys.douban.controller.MusicController;
-import cn.analysys.douban.dao.ReportDao;
-import cn.analysys.douban.mapper.MusicMapper;
-import cn.analysys.douban.mapper.MusicReviewMapper;
 import cn.analysys.douban.pojo.Music;
 import cn.analysys.douban.pojo.MusicDetail;
-import cn.analysys.douban.pojo.MusicReview;
-import org.jxls.common.Context;
-import org.jxls.transform.poi.PoiTransformer;
-import org.jxls.util.JxlsHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
-@Service
-public class MusicService {
+/**
+ * Description:
+ *
+ * @author houyi
+ * @version 1.0
+ * @date 2019/11/27 21:53
+ * @since JDK 1.8
+ */
+public interface MusicService {
+    List<Music> findTop50();
 
-    @Autowired
-    private MusicMapper musicMapper;
+    File export() throws IOException;
 
-    @Autowired
-    private MusicReviewMapper reviewMapper;
-
-    @Autowired
-    private ReportDao reportDao;
-
-    public List<Music> findTop50() {
-        List<Music> musics = musicMapper.selectTop50();
-        return musics;
-    }
-
-    public File export() throws IOException {
-        List<Music> musicList = musicMapper.selectTop50();
-        InputStream is = new FileInputStream("D:/template/export_template.xlsx");
-        OutputStream os = new FileOutputStream("D:/template/MusicTop50.xlsx");
-
-        Context context = PoiTransformer.createInitialContext();
-        if (musicList.size() > 0) {
-            context.putVar("musicList", musicList);
-        }
-        JxlsHelper.getInstance().processTemplate(is , os , context);
-        return new File("D:/template/MusicTop50.xlsx");
-    }
-
-    public MusicDetail selectDetail(Integer id){
-
-        List<MusicReview> reviews = reviewMapper.selectTop10(id);
-
-        if (reviews == null){
-            return null;
-        }
-        Music music = musicMapper.selectById(id);
-
-        if (music == null){
-            return null;
-        }
-        MusicDetail musicDetail = new MusicDetail(music,reviews);
-
-        return musicDetail;
-    }
+    MusicDetail selectDetail(Integer id);
 }

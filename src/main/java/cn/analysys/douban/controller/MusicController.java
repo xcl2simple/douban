@@ -1,11 +1,10 @@
 package cn.analysys.douban.controller;
 
 import cn.analysys.douban.exception.BusinessException;
-import cn.analysys.douban.exception.EmBusinessError;
 import cn.analysys.douban.pojo.Music;
 import cn.analysys.douban.pojo.MusicDetail;
-import cn.analysys.douban.pojo.MusicVO;
-import cn.analysys.douban.service.MusicService;
+import cn.analysys.douban.pojo.RankingListVO;
+import cn.analysys.douban.service.impl.MusicServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
@@ -27,23 +26,23 @@ import java.util.List;
 public class MusicController {
 
     @Autowired
-    private MusicService musicService;
+    private MusicServiceImpl musicServiceImpl;
 
     @ApiOperation(value = "获取评论热度前50的音乐信息",notes = "无接受参数")
     @GetMapping ("/rankingList")
-    public ResponseEntity<List<MusicVO>> rankingList(){
-        List<Music> musicList =musicService.findTop50();
-        List<MusicVO> musicVOS = convertFormMusicList(musicList);
-        return ResponseEntity.ok(musicVOS);
+    public ResponseEntity<List<RankingListVO>> rankingList(){
+        List<Music> musicList = musicServiceImpl.findTop50();
+        List<RankingListVO> rankingListVOS = convertFormMusicList(musicList);
+        return ResponseEntity.ok(rankingListVOS);
     }
 
     @ApiOperation(value = "获取音乐基本信息和短评",notes = "根据音乐id获取音乐基本信息和短评")
     @ApiImplicitParam(name ="musicId", value = "音乐id", dataType="Integer", required = true)
     @GetMapping("/detail/{musicId}")
     public ResponseEntity<MusicDetail> selectDetail(@PathVariable() Integer musicId) throws BusinessException {
-        MusicDetail musicDetail =musicService.selectDetail(musicId);
+        MusicDetail musicDetail = musicServiceImpl.selectDetail(musicId);
 //        if (musicDetail == null){
-//            throw new BusinessException(EmBusinessError.USER_NOT_EXIST);
+//            throw new BusinessException(BusinessExceptionEnum.USER_NOT_EXIST);
 //        }
         System.out.println(musicDetail.getMusic());
         return ResponseEntity.ok(musicDetail);
@@ -52,7 +51,7 @@ public class MusicController {
     @ApiOperation(value = "将评论热度前50的音乐信息打印到excel表中",notes = "无接受数据")
     @GetMapping("/export")
     public ResponseEntity<Resource> MusicReport() throws IOException {
-        File file = musicService.export();
+        File file = musicServiceImpl.export();
         Resource resource = new FileSystemResource(file);
         return ResponseEntity.ok(resource);
     }
@@ -61,17 +60,17 @@ public class MusicController {
      * 转换Music的list集合成为MusicVO的list集合
      *
      * @param musics
-     * @return List<MusicVO>
+     * @return List<RankingListVO>
      */
-    private List<MusicVO> convertFormMusicList(List<Music> musics){
-        List<MusicVO> musicVOS = new ArrayList<>();
+    private List<RankingListVO> convertFormMusicList(List<Music> musics){
+        List<RankingListVO> rankingListVOS = new ArrayList<>();
 
         for (Music music : musics){
-            MusicVO musicVO = new MusicVO();
-            BeanUtils.copyProperties(music,musicVO);
-            musicVOS.add(musicVO);
+            RankingListVO rankingListVO = new RankingListVO();
+            BeanUtils.copyProperties(music, rankingListVO);
+            rankingListVOS.add(rankingListVO);
         }
 
-        return musicVOS;
+        return rankingListVOS;
     }
 }

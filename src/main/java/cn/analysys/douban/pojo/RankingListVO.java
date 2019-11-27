@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MusicVO {
+public class RankingListVO {
 
     private String id;
 

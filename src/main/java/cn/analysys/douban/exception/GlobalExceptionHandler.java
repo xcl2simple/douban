@@ -6,58 +6,96 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Description:
+ * 全局异常捕获类
+ * 所有的异常都会在这个类中处理
  *
  * @author houyi
  * @version 1.0
  * @date 2019/11/25 22:13
  * @since JDK 1.8
  */
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * 捕获除特定异常外的其他所有异常
+     * @return 未知异常说明
+     */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ResponseEntity<ExceptionVO> resolveException() {
+    public ResponseEntity<ExceptionVO> handlerException() {
 
-        String errMsg = EmBusinessError.UNKNOW_ERROR.getErrMsg();
-        int errCode = EmBusinessError.UNKNOW_ERROR.getErrCode();
+        String errMsg = BusinessExceptionEnum.UNKNOW_ERROR.getExceptionMsg();
+        int errCode = BusinessExceptionEnum.UNKNOW_ERROR.getExceptionCode();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
-        return ResponseEntity.ok(exceptionVO);
+        return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(value = NotFoundException.class)//指定异常类型
+
+
+    /**
+     * 捕获空指针异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = NullPointerException.class)
     @ResponseBody
-    public ResponseEntity<ExceptionVO> handleNotFoundException(NotFoundException e) {
+    public ResponseEntity<ExceptionVO> handleNotFoundException() {
         //
-        int errCode = EmBusinessError.Null_Pointer.getErrCode();
-        String errMsg = EmBusinessError.Null_Pointer.getErrMsg();
+        int errCode = BusinessExceptionEnum.Null_Pointer.getExceptionCode();
+        String errMsg = BusinessExceptionEnum.Null_Pointer.getExceptionMsg();
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
-        return  ResponseEntity.ok(exceptionVO);
+        return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
+
     }
 
-    @ExceptionHandler(value = BusinessException.class)//指定异常类型
+    @ExceptionHandler(value = ArrayIndexOutOfBoundsException.class)
+    @ResponseBody
+    public ResponseEntity<ExceptionVO> handleArrayIndexOutOfBoundsException() {
+
+        int errCode = BusinessExceptionEnum.Array_Index_Out_Of_Bounds.getExceptionCode();
+        String errMsg = BusinessExceptionEnum.Array_Index_Out_Of_Bounds.getExceptionMsg();
+        ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
+
+        return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+    @ExceptionHandler(value = ArithmeticException .class)
+    @ResponseBody
+    public ResponseEntity<ExceptionVO> handleArithmeticException () {
+
+        int errCode = BusinessExceptionEnum.Arithmetic.getExceptionCode();
+        String errMsg = BusinessExceptionEnum.Arithmetic.getExceptionMsg();
+        ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
+
+        return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+    @ExceptionHandler(value = BusinessException.class)
     @ResponseBody
     public ResponseEntity<ExceptionVO> handleMyException(Exception e) {
 
         int errCode = 0;
         String errMsg = null;
 
-        if (e instanceof BusinessException){
-            errCode = EmBusinessError.USER_NOT_EXIST.getErrCode();
-            errMsg = EmBusinessError.USER_NOT_EXIST.getErrMsg();
+        BusinessException businessException = (BusinessException) e;
+
+        if ( businessException.getExceptionCode()== 20001){
+            errCode = BusinessExceptionEnum.USER_NOT_EXIST.getExceptionCode();
+            errMsg = BusinessExceptionEnum.USER_NOT_EXIST.getExceptionMsg();
         }
 
         ExceptionVO exceptionVO = new ExceptionVO(errCode,errMsg);
 
-        return  ResponseEntity.ok(exceptionVO);
+        return new ResponseEntity(exceptionVO,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 

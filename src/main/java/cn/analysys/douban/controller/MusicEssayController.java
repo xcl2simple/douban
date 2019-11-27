@@ -1,7 +1,7 @@
 package cn.analysys.douban.controller;
 
 import cn.analysys.douban.pojo.MusicEssay;
-import cn.analysys.douban.service.MusicEssayService;
+import cn.analysys.douban.service.impl.MusicEssayServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MusicEssayController {
 
     @Autowired
-    private MusicEssayService essayService;
+    private MusicEssayServiceImpl essayService;
 
     @ApiOperation (value = "获取音乐评论详情",notes = "根据乐评id获取乐评详情信息")
     @ApiImplicitParam (name = "essayid",value = "乐评id",dataType = "Integer",required = true)
