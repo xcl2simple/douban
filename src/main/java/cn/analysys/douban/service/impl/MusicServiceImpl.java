@@ -4,6 +4,7 @@ import cn.analysys.douban.dao.ReportDao;
 import cn.analysys.douban.mapper.MusicMapper;
 import cn.analysys.douban.pojo.Music;
 import cn.analysys.douban.pojo.MusicDetail;
+import cn.analysys.douban.pojo.MusicEssay;
 import cn.analysys.douban.pojo.MusicReview;
 import cn.analysys.douban.service.MusicService;
 import org.jxls.common.Context;
@@ -60,6 +61,13 @@ public class MusicServiceImpl implements MusicService {
         MusicDetail musicDetail = new MusicDetail(music,reviews);
 
         return musicDetail;
+    }
+
+    @Override
+    public MusicEssay selectById(Integer essayId){
+        MusicEssay musicEssay = musicMapper.selectEssay(essayId);
+        System.out.println(musicEssay);
+        return musicEssay;
     }
 
 }

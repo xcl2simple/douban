@@ -2,6 +2,7 @@ package cn.analysys.douban.service;
 
 import cn.analysys.douban.pojo.Music;
 import cn.analysys.douban.pojo.MusicDetail;
+import cn.analysys.douban.pojo.MusicEssay;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,4 +22,6 @@ public interface MusicService {
     File export() throws IOException;
 
     MusicDetail selectDetail(Integer id);
+
+    MusicEssay selectById(Integer essayId);
 }

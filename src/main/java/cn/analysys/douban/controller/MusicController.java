@@ -3,6 +3,7 @@ package cn.analysys.douban.controller;
 import cn.analysys.douban.exception.BusinessException;
 import cn.analysys.douban.pojo.Music;
 import cn.analysys.douban.pojo.MusicDetail;
+import cn.analysys.douban.pojo.MusicEssay;
 import cn.analysys.douban.pojo.RankingListVO;
 import cn.analysys.douban.service.impl.MusicServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
@@ -39,7 +40,7 @@ public class MusicController {
     @ApiOperation(value = "获取音乐基本信息和短评",notes = "根据音乐id获取音乐基本信息和短评")
     @ApiImplicitParam(name ="musicId", value = "音乐id", dataType="Integer", required = true)
     @GetMapping("/detail/{musicId}")
-    public ResponseEntity<MusicDetail> selectDetail(@PathVariable() Integer musicId) throws BusinessException {
+    public ResponseEntity<MusicDetail> selectMusicDetail(@PathVariable() Integer musicId) throws BusinessException {
         MusicDetail musicDetail = musicServiceImpl.selectDetail(musicId);
 //        if (musicDetail == null){
 //            throw new BusinessException(BusinessExceptionEnum.USER_NOT_EXIST);
@@ -54,6 +55,15 @@ public class MusicController {
         File file = musicServiceImpl.export();
         Resource resource = new FileSystemResource(file);
         return ResponseEntity.ok(resource);
+    }
+
+    @ApiOperation (value = "获取音乐评论详情",notes = "根据乐评id获取乐评详情信息")
+    @ApiImplicitParam (name = "essayid",value = "乐评id",dataType = "Integer",required = true)
+    @GetMapping ("/essayDetail/{essayId}")
+    public MusicEssay selectEssayDetail(@PathVariable() Integer essayId){
+        MusicEssay musicEssay = musicServiceImpl.selectById(essayId);
+
+        return musicEssay;
     }
 
     /**
@@ -73,4 +83,6 @@ public class MusicController {
 
         return rankingListVOS;
     }
+
+
 }
