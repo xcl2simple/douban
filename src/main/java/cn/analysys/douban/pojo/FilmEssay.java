@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class FilmEssay {
     private Integer id;
-    private Integer movie_id;
+    private Integer movieId;
     private String title;
-    private String user_icon;
-    private String user_name;
+    private String userIcon;
+    private String userName;
     private String content;
-    private Date discuss_date;
-    private Integer useful_count;
-    private Integer unuseful_count;
-    private Integer reply_count;
+    private Date discussDate;
+    private Integer usefulCount;
+    private Integer unusefulCount;
+    private Integer replpCount;
 
     public Integer getId() {
         return id;
@@ -22,12 +22,12 @@ public class FilmEssay {
         this.id = id;
     }
 
-    public Integer getMovie_id() {
-        return movie_id;
+    public Integer getMovieId() {
+        return movieId;
     }
 
-    public void setMovie_id(Integer movie_id) {
-        this.movie_id = movie_id;
+    public void setMovieId(Integer movieId) {
+        this.movieId = movieId;
     }
 
     public String getTitle() {
@@ -38,20 +38,20 @@ public class FilmEssay {
         this.title = title;
     }
 
-    public String getUser_icon() {
-        return user_icon;
+    public String getUserIcon() {
+        return userIcon;
     }
 
-    public void setUser_icon(String user_icon) {
-        this.user_icon = user_icon;
+    public void setUserIcon(String userIcon) {
+        this.userIcon = userIcon;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getContent() {
@@ -62,51 +62,51 @@ public class FilmEssay {
         this.content = content;
     }
 
-    public Date getDiscuss_date() {
-        return discuss_date;
+    public Date getDiscussDate() {
+        return discussDate;
     }
 
-    public void setDiscuss_date(Date discuss_date) {
-        this.discuss_date = discuss_date;
+    public void setDiscussDate(Date discussDate) {
+        this.discussDate = discussDate;
     }
 
-    public Integer getUseful_count() {
-        return useful_count;
+    public Integer getUsefulCount() {
+        return usefulCount;
     }
 
-    public void setUseful_count(Integer useful_count) {
-        this.useful_count = useful_count;
+    public void setUsefulCount(Integer usefulCount) {
+        this.usefulCount = usefulCount;
     }
 
-    public Integer getUnuseful_count() {
-        return unuseful_count;
+    public Integer getUnusefulCount() {
+        return unusefulCount;
     }
 
-    public void setUnuseful_count(Integer unuseful_count) {
-        this.unuseful_count = unuseful_count;
+    public void setUnusefulCount(Integer unusefulCount) {
+        this.unusefulCount = unusefulCount;
     }
 
-    public Integer getReply_count() {
-        return reply_count;
+    public Integer getReplpCount() {
+        return replpCount;
     }
 
-    public void setReply_count(Integer reply_count) {
-        this.reply_count = reply_count;
+    public void setReplpCount(Integer replpCount) {
+        this.replpCount = replpCount;
     }
 
     @Override
     public String toString() {
         return "FilmEssay{" +
                 "id=" + id +
-                ", movie_id=" + movie_id +
+                ", movieId=" + movieId +
                 ", title='" + title + '\'' +
-                ", user_icon='" + user_icon + '\'' +
-                ", user_name='" + user_name + '\'' +
+                ", userIcon='" + userIcon + '\'' +
+                ", userName='" + userName + '\'' +
                 ", content='" + content + '\'' +
-                ", discuss_date=" + discuss_date +
-                ", useful_count=" + useful_count +
-                ", unuseful_count=" + unuseful_count +
-                ", reply_count=" + reply_count +
+                ", discussDate=" + discussDate +
+                ", usefulCount=" + usefulCount +
+                ", unusefulCount=" + unusefulCount +
+                ", replpCount=" + replpCount +
                 '}';
     }
 }

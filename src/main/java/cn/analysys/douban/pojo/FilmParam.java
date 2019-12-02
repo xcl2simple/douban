@@ -1,10 +1,12 @@
 package cn.analysys.douban.pojo;
 
+import io.swagger.models.auth.In;
+
 import java.util.Date;
 
 public class FilmParam {
     private Date date;
-    private Integer area_id;
+    private Integer areaId;
     private Integer limitnum;
 
     public Date getDate() {
@@ -16,11 +18,11 @@ public class FilmParam {
     }
 
     public Integer getArea_id() {
-        return area_id;
+        return areaId;
     }
 
     public void setArea_id(Integer area_id) {
-        this.area_id = area_id;
+        this.areaId = area_id;
     }
 
     public Integer getLimitnum() {

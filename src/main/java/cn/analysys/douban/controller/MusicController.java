@@ -3,23 +3,27 @@ package cn.analysys.douban.controller;
 import cn.analysys.douban.pojo.Music;
 import cn.analysys.douban.pojo.MusicDetail;
 import cn.analysys.douban.service.MusicService;
+import cn.analysys.douban.dao.ReportDao;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.io.*;
 import java.util.List;
 @RestController
 @RequestMapping("music")
+@CrossOrigin
 public class MusicController {
 
     @Autowired
     private MusicService musicService;
+    @Autowired
+    private ReportDao reportDao;
 
-    @ApiOperation(value = "获取评论热度前50的音乐信息",notes = "无接受参数")
+    @ApiOperation(value = "获取评论热度前50的音乐信息,且导出excel",notes = "无接受参数")
     @GetMapping ("/rankingList")
     public List<Music> rankingList(){
         List<Music> musicList =musicService.findTop50();
@@ -33,5 +37,13 @@ public class MusicController {
         MusicDetail musicDetail =musicService.selectDetail(musicid);
 
         return musicDetail;
+    }
+
+    @ApiOperation(value = "将评论热度前50的音乐信息打印到excel表中",notes = "无接受数据")
+    @GetMapping("/export")
+    public ResponseEntity<Resource> MusicReport() throws IOException {
+        File file = musicService.export();
+        Resource resource = new FileSystemResource(file);
+        return ResponseEntity.ok(resource);
     }
 }

@@ -1,30 +1,30 @@
 package cn.analysys.douban.pojo;
 
 public class Film {
-    private Integer id;
+    private String id;
     private String name;
     private String director;
     private String scriptwriter;
     private String actor;
     private String genre;
     private String area;
-    private Integer area_id;
+    private Integer areaId;
     private String language;
-    private String release_time;
+    private String releaseTime;
     private String mins;
-    private String alternate_name;
+    private String alternateName;
     private String imdb;
-    private Float grade;
-    private String review_num;
-    private String essay_num;
-    private String comment_num;
-    private String movie_icon;
+    private Double grade;
+    private Integer reviewNum;
+    private Integer essayNum;
+    private Integer commentNum;
+    private String movieIcon;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,11 +77,11 @@ public class Film {
     }
 
     public Integer getArea_id() {
-        return area_id;
+        return areaId;
     }
 
     public void setArea_id(Integer area_id) {
-        this.area_id = area_id;
+        this.areaId = area_id;
     }
 
     public String getLanguage() {
@@ -92,12 +92,12 @@ public class Film {
         this.language = language;
     }
 
-    public String getRelease_time() {
-        return release_time;
+    public String getReleaseTime() {
+        return releaseTime;
     }
 
-    public void setRelease_time(String release_time) {
-        this.release_time = release_time;
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
     }
 
     public String getMins() {
@@ -108,12 +108,12 @@ public class Film {
         this.mins = mins;
     }
 
-    public String getAlternate_name() {
-        return alternate_name;
+    public String getAlternateName() {
+        return alternateName;
     }
 
-    public void setAlternate_name(String alternate_name) {
-        this.alternate_name = alternate_name;
+    public void setAlternateName(String alternateName) {
+        this.alternateName = alternateName;
     }
 
     public String getImdb() {
@@ -124,67 +124,67 @@ public class Film {
         this.imdb = imdb;
     }
 
-    public Float getGrade() {
+    public Double getGrade() {
         return grade;
     }
 
-    public void setGrade(Float grade) {
+    public void setGrade(Double grade) {
         this.grade = grade;
     }
 
-    public String getReview_num() {
-        return review_num;
+    public Integer getReviewNum() {
+        return reviewNum;
     }
 
-    public void setReview_num(String review_num) {
-        this.review_num = review_num;
+    public void setReviewNum(Integer reviewNum) {
+        this.reviewNum = reviewNum;
     }
 
-    public String getEssay_num() {
-        return essay_num;
+    public Integer getEssayNum() {
+        return essayNum;
     }
 
-    public void setEssay_num(String essay_num) {
-        this.essay_num = essay_num;
+    public void setEssayNum(Integer essayNum) {
+        this.essayNum = essayNum;
     }
 
-    public String getComment_num() {
-        return comment_num;
+    public Integer getCommentNum() {
+        return commentNum;
     }
 
-    public void setComment_num(String comment_num) {
-        this.comment_num = comment_num;
+    public void setCommentNum(Integer commentNum) {
+        this.commentNum = commentNum;
     }
 
-    public String getMovie_icon() {
-        return movie_icon;
+    public String getMovieIcon() {
+        return movieIcon;
     }
 
-    public void setMovie_icon(String movie_icon) {
-        this.movie_icon = movie_icon;
+    public void setMovieIcon(String movieIcon) {
+        this.movieIcon = movieIcon;
     }
 
     @Override
     public String toString() {
         return "Film{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", director='" + director + '\'' +
                 ", scriptwriter='" + scriptwriter + '\'' +
                 ", actor='" + actor + '\'' +
                 ", genre='" + genre + '\'' +
                 ", area='" + area + '\'' +
-                ", area_id=" + area_id +
+                ", area_id=" + areaId +
                 ", language='" + language + '\'' +
-                ", release_time='" + release_time + '\'' +
+                ", releaseTime='" + releaseTime + '\'' +
                 ", mins='" + mins + '\'' +
-                ", alternate_name='" + alternate_name + '\'' +
+                ", alternateName='" + alternateName + '\'' +
                 ", imdb='" + imdb + '\'' +
                 ", grade=" + grade +
-                ", review_num='" + review_num + '\'' +
-                ", essay_num='" + essay_num + '\'' +
-                ", comment_num='" + comment_num + '\'' +
-                ", movie_icon='" + movie_icon + '\'' +
+                ", reviewNum=" + reviewNum +
+                ", essayNum=" + essayNum +
+                ", commentNum=" + commentNum +
+                ", movieIcon='" + movieIcon + '\'' +
                 '}';
     }
 }

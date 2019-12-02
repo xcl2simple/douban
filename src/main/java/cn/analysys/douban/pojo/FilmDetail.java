@@ -1,31 +1,31 @@
 package cn.analysys.douban.pojo;
 
 public class FilmDetail {
-    private Integer film_id;
+    private Integer filmId;
     private String name;
     private String director;
     private String scriptwriter;
     private String actor;
     private String genre;
     private String area;
-    private Integer area_id;
+    private Integer areaId;
     private String language;
-    private String release_time;
+    private String releaseTime;
     private String mins;
-    private String alternate_name;
+    private String alternateName;
     private String imdb;
     private Float grade;
-    private String review_num;
-    private String essay_num;
-    private String comment_num;
+    private String reviewNum;
+    private String essayNum;
+    private String commentNum;
     private String content;
 
-    public Integer getFilm_id() {
-        return film_id;
+    public Integer getFilmId() {
+        return filmId;
     }
 
-    public void setFilm_id(Integer film_id) {
-        this.film_id = film_id;
+    public void setFilmId(Integer filmId) {
+        this.filmId = filmId;
     }
 
     public String getName() {
@@ -76,12 +76,12 @@ public class FilmDetail {
         this.area = area;
     }
 
-    public Integer getArea_id() {
-        return area_id;
+    public Integer getAreaId() {
+        return areaId;
     }
 
-    public void setArea_id(Integer area_id) {
-        this.area_id = area_id;
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
     }
 
     public String getLanguage() {
@@ -92,12 +92,12 @@ public class FilmDetail {
         this.language = language;
     }
 
-    public String getRelease_time() {
-        return release_time;
+    public String getReleaseTime() {
+        return releaseTime;
     }
 
-    public void setRelease_time(String release_time) {
-        this.release_time = release_time;
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
     }
 
     public String getMins() {
@@ -108,12 +108,12 @@ public class FilmDetail {
         this.mins = mins;
     }
 
-    public String getAlternate_name() {
-        return alternate_name;
+    public String getAlternateName() {
+        return alternateName;
     }
 
-    public void setAlternate_name(String alternate_name) {
-        this.alternate_name = alternate_name;
+    public void setAlternateName(String alternateName) {
+        this.alternateName = alternateName;
     }
 
     public String getImdb() {
@@ -132,28 +132,28 @@ public class FilmDetail {
         this.grade = grade;
     }
 
-    public String getReview_num() {
-        return review_num;
+    public String getReviewNum() {
+        return reviewNum;
     }
 
-    public void setReview_num(String review_num) {
-        this.review_num = review_num;
+    public void setReviewNum(String reviewNum) {
+        this.reviewNum = reviewNum;
     }
 
-    public String getEssay_num() {
-        return essay_num;
+    public String getEssayNum() {
+        return essayNum;
     }
 
-    public void setEssay_num(String essay_num) {
-        this.essay_num = essay_num;
+    public void setEssayNum(String essayNum) {
+        this.essayNum = essayNum;
     }
 
-    public String getComment_num() {
-        return comment_num;
+    public String getCommentNum() {
+        return commentNum;
     }
 
-    public void setComment_num(String comment_num) {
-        this.comment_num = comment_num;
+    public void setCommentNum(String commentNum) {
+        this.commentNum = commentNum;
     }
 
     public String getContent() {
@@ -167,23 +167,23 @@ public class FilmDetail {
     @Override
     public String toString() {
         return "FilmDetail{" +
-                "film_id=" + film_id +
+                "filmId=" + filmId +
                 ", name='" + name + '\'' +
                 ", director='" + director + '\'' +
                 ", scriptwriter='" + scriptwriter + '\'' +
                 ", actor='" + actor + '\'' +
                 ", genre='" + genre + '\'' +
                 ", area='" + area + '\'' +
-                ", area_id=" + area_id +
+                ", areaId=" + areaId +
                 ", language='" + language + '\'' +
-                ", release_time='" + release_time + '\'' +
+                ", releaseTime='" + releaseTime + '\'' +
                 ", mins='" + mins + '\'' +
-                ", alternate_name='" + alternate_name + '\'' +
+                ", alternateName='" + alternateName + '\'' +
                 ", imdb='" + imdb + '\'' +
                 ", grade=" + grade +
-                ", review_num='" + review_num + '\'' +
-                ", essay_num='" + essay_num + '\'' +
-                ", comment_num='" + comment_num + '\'' +
+                ", reviewNum='" + reviewNum + '\'' +
+                ", essayNum='" + essayNum + '\'' +
+                ", commentNum='" + commentNum + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }
